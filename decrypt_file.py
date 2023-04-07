@@ -1,16 +1,15 @@
 from cryptography.fernet import Fernet
 import base64
 import hashlib
+import sys
+import getpass
 
-# Replace the value of PASSCODE with the passcode
-# that should be used to encrypt the file
-PASSCODE = 'ReplaceThisWithPassword'
+FILE_INPUT_PATH = sys.argv[1]
+FILE_OUTPUT_PATH = sys.argv[2]
+PASSCODE = getpass.getpass()
 
-# Replace with file path of the file to be decrypted
-FILE_INPUT_PATH = 'path_to_file'
-
-# Replace with file path of the file to be outputed to
-FILE_OUTPUT_PATH = 'path_to_file'
+# Example command:
+# decrypt_file.py input_file output_file
 
 # Generates fernet key with the passcode given as argument
 def gen_fernet_key(passcode: bytes) -> bytes:
